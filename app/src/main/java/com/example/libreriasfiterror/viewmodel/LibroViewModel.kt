@@ -1,8 +1,8 @@
 package com.example.libreriasfiterror.viewmodel
 
+import LibroRepository
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.libreriasfiterror.repository.LibroRepository
 
 class LibroViewModel : ViewModel() {
 

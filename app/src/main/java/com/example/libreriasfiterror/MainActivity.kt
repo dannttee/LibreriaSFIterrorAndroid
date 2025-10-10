@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.libreriasfiterror.ui.HomeScreen
+import com.example.libreriasfiterror.ui.AppNavigation
 import com.example.libreriasfiterror.ui.theme.LibreriaSfiterrorTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LibreriaSfiterrorTheme {
-                HomeScreen()
+                AppNavigation()
             }
         }
     }
