@@ -7,13 +7,16 @@ import com.example.libreriasfiterror.model.Libro
 import com.example.libreriasfiterror.repository.LibroRepository
 
 class LibroViewModel : ViewModel() {
+
     private val _libros = mutableStateListOf<Libro>().apply {
         addAll(LibroRepository.getLibros())
     }
     val libros: SnapshotStateList<Libro> get() = _libros
 
+
     private val _carrito = mutableStateListOf<Libro>()
     val carrito: SnapshotStateList<Libro> get() = _carrito
+
 
     fun agregarAlCarrito(libro: Libro) {
         _carrito.add(libro)
@@ -25,5 +28,14 @@ class LibroViewModel : ViewModel() {
 
     fun limpiarCarrito() {
         _carrito.clear()
+    }
+
+
+    fun agregarAlCatalogo(libro: Libro) {
+        _libros.add(libro)
+    }
+
+    fun eliminarDelCatalogo(libro: Libro) {
+        _libros.remove(libro)
     }
 }

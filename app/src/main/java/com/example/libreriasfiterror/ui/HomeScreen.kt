@@ -7,9 +7,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.libreriasfiterror.viewmodel.UserAdminViewModel
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavController, userAdminViewModel: UserAdminViewModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -30,7 +31,16 @@ fun HomeScreen(navController: NavController) {
         Button(onClick = { navController.navigate("info") }, modifier = Modifier.fillMaxWidth()) {
             Text("Quiénes somos")
         }
+        Spacer(modifier = Modifier.height(24.dp))
+        if (userAdminViewModel.isAdmin) {
+            Divider()
+            Spacer(modifier = Modifier.height(14.dp))
+            Text("Opciones de administración", style = MaterialTheme.typography.titleMedium)
+            Spacer(modifier = Modifier.height(10.dp))
+            Button(onClick = { navController.navigate("panelAdmin") }, modifier = Modifier.fillMaxWidth()) {
+                Text("Panel de administrador")
+            }
+        }
     }
 }
-
 

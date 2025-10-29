@@ -6,15 +6,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.KeyboardOptions
-import androidx.compose.ui.text.input.KeyboardActions
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.libreriasfiterror.viewmodel.UserAdminViewModel
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen(navController: NavController, userAdminViewModel: UserAdminViewModel) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showError by remember { mutableStateOf(false) }
@@ -23,10 +21,12 @@ fun LoginScreen(navController: NavController) {
     fun intentarLogin() {
         showError = false
         if (username == "admin" && password == "admin123") {
+            userAdminViewModel.isAdmin = true
             navController.navigate("admin") {
                 popUpTo("login") { inclusive = true }
             }
         } else if (username == "cliente" && password == "cliente123") {
+            userAdminViewModel.isAdmin = false
             navController.navigate("home") {
                 popUpTo("login") { inclusive = true }
             }
@@ -50,8 +50,7 @@ fun LoginScreen(navController: NavController) {
             value = username,
             onValueChange = { username = it },
             label = { Text("Usuario") },
-            modifier = Modifier.fillMaxWidth(),
-            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next)
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -61,11 +60,7 @@ fun LoginScreen(navController: NavController) {
             onValueChange = { password = it },
             label = { Text("Contraseña") },
             modifier = Modifier.fillMaxWidth(),
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
-            keyboardActions = KeyboardActions(
-                onDone = { intentarLogin() }
-            )
+            visualTransformation = PasswordVisualTransformation()
         )
 
         Spacer(modifier = Modifier.height(20.dp))
