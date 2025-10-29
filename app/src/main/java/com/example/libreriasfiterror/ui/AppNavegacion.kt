@@ -6,7 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun NavegacionApp() {
+fun AppNavegacion() {
     val navController = rememberNavController()
 
     NavHost(
@@ -14,30 +14,24 @@ fun NavegacionApp() {
         startDestination = "login",
         route = "app_root"
     ) {
-        // Pantalla de Login (solo acceso, NO registro)
         composable(route = "login") {
             LoginScreen(navController = navController)
         }
-        // Home/Catálogo de productos
         composable(route = "home") {
             HomeScreen(navController = navController)
         }
         composable(route = "catalogo") {
             CatalogoScreen(navController = navController)
         }
-        // Detalle del producto
         composable(route = "detalle") {
             DetalleProductoScreen(navController = navController)
         }
-        // Carrito de compras
         composable(route = "carrito") {
             CarritoScreen(navController = navController)
         }
-        // Panel administración (solo admin)
         composable(route = "admin") {
-            PanelAdminScreen(navController = navController)
+            PanelAdminScreen(navController = navController) // <----- CORREGIDO
         }
-        // Pantalla "Quiénes Somos" (opcional)
         composable(route = "info") {
             InfoScreen(navController = navController)
         }

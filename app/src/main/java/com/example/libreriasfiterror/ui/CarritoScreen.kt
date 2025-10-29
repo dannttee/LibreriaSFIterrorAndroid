@@ -1,64 +1,51 @@
-package com.example.libreriasfiterror.ui.cart
+package com.example.libreriasfiterror.ui
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.libreriasfiterror.viewmodel.LibroViewModel
-import com.example.libreriasfiterror.model.Libro
+import androidx.navigation.NavController
+
+// Simula datos agregados
+val fakeCartBooks = listOf("Dune", "1984", "El resplandor")
 
 @Composable
-fun CarritoScreen(
-    viewModel: LibroViewModel,
-    onEliminarDelCarrito: (Libro) -> Unit,
-    onVolver: () -> Unit
-) {
-    val carrito = viewModel.carrito
-    val total = carrito.sumOf { it.precio }
-
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text(
-            text = "Carrito",
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        LazyColumn(modifier = Modifier.weight(1f)) {
-            items(carrito) { libro ->
-                CarritoItem(libro, onEliminarDelCarrito)
-                Spacer(Modifier.height(8.dp))
+fun CarritoScreen(navController: NavController) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(24.dp)) {
+        Text("Carrito de compras", style = MaterialTheme.typography.headlineMedium)
+        Spacer(Modifier.height(16.dp))
+        if (fakeCartBooks.isNotEmpty()) {
+            fakeCartBooks.forEach { libro ->
+                Card (Modifier
+                    .padding(vertical = 6.dp)
+                    .fillMaxWidth()) {
+                    Row(modifier = Modifier.padding(12.dp)) {
+                        Text(libro, style = MaterialTheme.typography.bodyMedium)
+                    }
+                }
             }
-        }
-        Text(
-            text = "Total: $${total}",
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(vertical = 16.dp)
-        )
-        Button(
-            onClick = onVolver,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Volver al catálogo")
-        }
-    }
-}
-
-@Composable
-fun CarritoItem(libro: Libro, onEliminarDelCarrito: (Libro) -> Unit) {
-    Card(Modifier.fillMaxWidth()) {
-        Row(Modifier.padding(8.dp)) {
-            Column(Modifier.weight(1f)) {
-                Text(libro.titulo, style = MaterialTheme.typography.titleMedium)
-                Text("Precio: $${libro.precio}", style = MaterialTheme.typography.bodySmall)
-            }
+            Spacer(Modifier.height(18.dp))
             Button(
-                onClick = { onEliminarDelCarrito(libro) },
-                modifier = Modifier.padding(start = 8.dp)
+                onClick = { /* Lógica para confirmar compra */ },
+                modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Eliminar")
+                Text("Confirmar compra")
             }
+            Spacer(Modifier.height(10.dp))
+            Button(onClick = { /* Lógica para limpiar carrito */ },
+                modifier = Modifier.fillMaxWidth()) {
+                Text("Vaciar carrito")
+            }
+        } else {
+            Text("Tu carrito está vacío.", style = MaterialTheme.typography.bodyMedium)
+        }
+        Spacer(Modifier.height(16.dp))
+        Button(onClick = { navController.popBackStack() },
+            modifier = Modifier.fillMaxWidth()) {
+            Text("Volver")
         }
     }
 }
