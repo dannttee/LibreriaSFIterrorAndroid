@@ -5,5 +5,7 @@ data class Libro(
     val titulo: String,
     val autor: String,
     val precio: Double,
-    val imagenRes: Int
+    val genero: String,
+    val descripcion: String,
+    val imagenRes: Int // Si usas recursos locales para imágenes
 )

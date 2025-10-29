@@ -1,14 +1,29 @@
 package com.example.libreriasfiterror.viewmodel
 
-import LibroRepository
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import com.example.libreriasfiterror.model.Libro
+import com.example.libreriasfiterror.repository.LibroRepository
 
 class LibroViewModel : ViewModel() {
+    private val _libros = mutableStateListOf<Libro>().apply {
+        addAll(LibroRepository.getLibros())
+    }
+    val libros: SnapshotStateList<Libro> get() = _libros
 
-    private val repository = LibroRepository()
+    private val _carrito = mutableStateListOf<Libro>()
+    val carrito: SnapshotStateList<Libro> get() = _carrito
 
-    val libros = liveData {
-        emit(repository.obtenerLibros())
+    fun agregarAlCarrito(libro: Libro) {
+        _carrito.add(libro)
+    }
+
+    fun eliminarDelCarrito(libro: Libro) {
+        _carrito.remove(libro)
+    }
+
+    fun limpiarCarrito() {
+        _carrito.clear()
     }
 }

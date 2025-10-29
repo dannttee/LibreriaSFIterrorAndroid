@@ -1,4 +1,4 @@
-package com.example.libreriasfiterror
+package com.example.libreriasfiterror.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,10 +10,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-                LibreriaSfiterrorTheme {
+            LibreriaSfiterrorTheme {
                 NavegacionApp()
             }
         }
     }
 }
-
