@@ -10,7 +10,10 @@ import androidx.navigation.NavController
 import com.example.libreriasfiterror.viewmodel.UserAdminViewModel
 
 @Composable
-fun HomeScreen(navController: NavController, userAdminViewModel: UserAdminViewModel) {
+fun HomeScreen(
+    navController: NavController,
+    userAdminViewModel: UserAdminViewModel
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,6 +44,20 @@ fun HomeScreen(navController: NavController, userAdminViewModel: UserAdminViewMo
                 Text("Panel de administrador")
             }
         }
+        Spacer(modifier = Modifier.height(24.dp))
+        // Botón para cerrar sesión
+        Button(
+            onClick = {
+                userAdminViewModel.isAdmin = false // Reset admin state
+                navController.navigate("login") {
+                    popUpTo(0) { inclusive = true }
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Cerrar sesión")
+        }
     }
 }
+
 
