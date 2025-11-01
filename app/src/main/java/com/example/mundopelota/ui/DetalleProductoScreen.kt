@@ -1,4 +1,4 @@
-package com.example.libreriasfiterror.ui
+package com.example.mundopelota.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -9,17 +9,17 @@ import androidx.navigation.NavController
 
 @Composable
 fun DetalleProductoScreen(navController: NavController) {
-    // Datos simulados del libro
-    val nombreLibro = "Ejemplo: Dune"
-    val autor = "Frank Herbert"
-    val descripcion = "Clásico de la ciencia ficción con elementos épicos y filosóficos."
-    val precio = "$10.000"
+    // Datos simulados de la pelota
+    val nombrePelota = "Ejemplo: Mikasa V200W"
+    val tipo = "Vóleibol profesional"
+    val descripcion = "Balón oficial de competencias internacionales, excelente control y durabilidad."
+    val precio = "$29.990"
 
     Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
         Text("Detalle del Producto", style = MaterialTheme.typography.headlineMedium)
         Spacer(Modifier.height(24.dp))
-        Text("Libro: $nombreLibro", style = MaterialTheme.typography.titleLarge)
-        Text("Autor: $autor", style = MaterialTheme.typography.bodyMedium)
+        Text("Pelota: $nombrePelota", style = MaterialTheme.typography.titleLarge)
+        Text("Tipo: $tipo", style = MaterialTheme.typography.bodyMedium)
         Text("Descripción: $descripcion", style = MaterialTheme.typography.bodyMedium)
         Spacer(Modifier.height(16.dp))
         Text("Precio: $precio", style = MaterialTheme.typography.titleMedium)

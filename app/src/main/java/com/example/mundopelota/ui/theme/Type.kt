@@ -1,4 +1,4 @@
-package com.example.libreriasfiterror.ui.theme
+package com.example.mundopelota.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,4 +1,4 @@
-package com.example.libreriasfiterror.ui.theme
+package com.example.mundopelota.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

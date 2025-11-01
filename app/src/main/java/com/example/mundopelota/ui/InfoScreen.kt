@@ -1,4 +1,4 @@
-package com.example.libreriasfiterror.ui
+package com.example.mundopelota.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -20,7 +20,7 @@ fun InfoScreen(navController: NavController) {
         Text("Quiénes Somos", style = MaterialTheme.typography.headlineMedium)
         Spacer(Modifier.height(24.dp))
         Text(
-            "Librería SFITerror es tu espacio para encontrar lo mejor de la ciencia ficción y el terror. Nuestro objetivo es acercar lecturas impactantes a todos los amantes de los géneros fantásticos.",
+            "MundoPelota es tu tienda especializada en balones deportivos. Nos dedicamos a ofrecer variedad, calidad y asesoría para todos los fanáticos del fútbol, básquetbol, vóleibol y más.",
             style = MaterialTheme.typography.bodyMedium
         )
         Spacer(Modifier.height(18.dp))

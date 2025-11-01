@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.libreriasfiterror"
+    namespace = "com.example.mundopelota"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.libreriasfiterror"
+        applicationId = "com.example.mundopelota"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

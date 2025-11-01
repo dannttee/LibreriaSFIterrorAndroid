@@ -1,4 +1,4 @@
-package com.example.libreriasfiterror.ui
+package com.example.mundopelota.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -6,11 +6,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.libreriasfiterror.viewmodel.CartViewModel
+import com.example.mundopelota.viewmodel.CartViewModel
 
 @Composable
 fun CarritoScreen(navController: NavController, cartViewModel: CartViewModel) {
-    val cartBooks = cartViewModel.carrito
+    val cartBalls = cartViewModel.carrito
 
     Column(
         modifier = Modifier
@@ -19,16 +19,16 @@ fun CarritoScreen(navController: NavController, cartViewModel: CartViewModel) {
     ) {
         Text("Carrito de compras", style = MaterialTheme.typography.headlineMedium)
         Spacer(Modifier.height(16.dp))
-        if (cartBooks.isNotEmpty()) {
-            cartBooks.forEach { libro ->
+        if (cartBalls.isNotEmpty()) {
+            cartBalls.forEach { pelota ->
                 Card(
                     Modifier
                         .padding(vertical = 6.dp)
                         .fillMaxWidth()
                 ) {
                     Row(modifier = Modifier.padding(12.dp)) {
-                        // Aquí está la corrección: muestra nombre y precio
-                        Text("${libro.nombre} - \$${libro.precio}", style = MaterialTheme.typography.bodyMedium)
+                        // Muestra nombre y precio de la pelota
+                        Text("${pelota.nombre} - \$${pelota.precio}", style = MaterialTheme.typography.bodyMedium)
                     }
                 }
             }

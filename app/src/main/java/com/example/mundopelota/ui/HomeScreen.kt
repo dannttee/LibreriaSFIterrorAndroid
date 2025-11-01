@@ -1,4 +1,4 @@
-package com.example.libreriasfiterror.ui
+package com.example.mundopelota.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.libreriasfiterror.viewmodel.UserAdminViewModel
+import com.example.mundopelota.viewmodel.UserAdminViewModel
 
 @Composable
 fun HomeScreen(
@@ -21,10 +21,10 @@ fun HomeScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Bienvenido a la tienda", style = MaterialTheme.typography.headlineSmall)
+        Text("Bienvenido a MundoPelota", style = MaterialTheme.typography.headlineSmall)
         Spacer(modifier = Modifier.height(20.dp))
         Button(onClick = { navController.navigate("catalogo") }, modifier = Modifier.fillMaxWidth()) {
-            Text("Catálogo")
+            Text("Catálogo de pelotas")
         }
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = { navController.navigate("carrito") }, modifier = Modifier.fillMaxWidth()) {
@@ -45,10 +45,9 @@ fun HomeScreen(
             }
         }
         Spacer(modifier = Modifier.height(24.dp))
-        // Botón para cerrar sesión
         Button(
             onClick = {
-                userAdminViewModel.isAdmin = false // Reset admin state
+                userAdminViewModel.isAdmin = false
                 navController.navigate("login") {
                     popUpTo(0) { inclusive = true }
                 }
@@ -59,5 +58,6 @@ fun HomeScreen(
         }
     }
 }
+
 
 

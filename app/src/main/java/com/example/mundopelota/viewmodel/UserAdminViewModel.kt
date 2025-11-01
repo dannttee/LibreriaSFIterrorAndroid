@@ -1,4 +1,4 @@
-package com.example.libreriasfiterror.viewmodel
+package com.example.mundopelota.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.mutableStateOf

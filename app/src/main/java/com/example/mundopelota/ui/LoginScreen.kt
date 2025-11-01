@@ -1,4 +1,4 @@
-package com.example.libreriasfiterror.ui
+package com.example.mundopelota.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.libreriasfiterror.viewmodel.UserAdminViewModel
+import com.example.mundopelota.viewmodel.UserAdminViewModel
 
 @Composable
 fun LoginScreen(navController: NavController, userAdminViewModel: UserAdminViewModel) {
@@ -74,7 +74,7 @@ fun LoginScreen(navController: NavController, userAdminViewModel: UserAdminViewM
 
         if (showError) {
             Spacer(modifier = Modifier.height(10.dp))
-            Text("Credenciales incorrectas", color = MaterialTheme.colorScheme.error)
+            Text("Usuario o contraseña incorrectos", color = MaterialTheme.colorScheme.error)
         }
     }
 }
